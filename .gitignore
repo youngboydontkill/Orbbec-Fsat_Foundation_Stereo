@@ -1,0 +1,15 @@
+dataset/*
+*.tar.gz
+*.zip
+.idea/
+.vscode/
+__pycache__/
+build/*
+devel/*
+logs/*
+.catkin_tools/
+./src/CMakeLists.txt
+.ccache
+ecmaster*.log
+ecmaster*.csv
+log/*

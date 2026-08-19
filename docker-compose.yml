@@ -1,0 +1,24 @@
+services:
+  gemini:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gemini-ros1:cuda12.8
+    container_name: gemini_ros1
+    stdin_open: true
+    tty: true
+    network_mode: host
+    ipc: host
+    shm_size: 4gb
+    privileged: true
+    gpus: all
+    environment:
+      DISPLAY: ${DISPLAY:-}
+      QT_X11_NO_MITSHM: "1"
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility,video
+    volumes:
+      - .:/root/gemini_ws
+      - ${HOME}/.Xauthority:/root/.Xauthority:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /dev/bus/usb:/dev/bus/usb
+    command: bash
